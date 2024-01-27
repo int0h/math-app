@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous"> -->
+    <title>Math App</title>
+    <style>
+        html, body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .eq {
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .eq input {
+            font-size: 40px;
+        }
+
+        .eq button {
+            align-self: stretch;
+        }
+
+        .status {
+            font-size: 128px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="status">
+        😡
+    </div>
+    <div class="eq">
+        <div id="eq-left">9 + 7 = </div>
+        &nbsp;
+        <input id="eq-right" type="number">
+        &nbsp;
+        <button id="ok-btn">OK</button>
+    </div>
+    <div class="buttons">
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
