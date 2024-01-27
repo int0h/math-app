@@ -103,3 +103,15 @@ updateScore();
 genButtons();
 
 setupEq(generate());
+
+let lastTouch = 0;
+window.addEventListener('touchend', e => {
+    if (Date.now() - lastTouch < 1000) {
+        e.preventDefault();
+        lastTouch = Date.now();
+    }
+}, false);
+
+if (location.hash === '#debug') {
+    alert(JSON.stringify(localStorage.getItem('score')));
+}

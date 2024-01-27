@@ -6,12 +6,31 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous"> -->
     <title>Math App</title>
     <style>
+        * {
+        /*Reset's every elements apperance*/
+                background: none repeat scroll 0 0 transparent;
+                border: medium none;
+                border-spacing: 0;
+                color: #26589F;
+                /* font-family: 'PT Sans Narrow',sans-serif; */
+                /* font-size: 16px; */
+                font-weight: normal;
+                /* line-height: 1.42rem; */
+                list-style: none outside none;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                text-decoration: none;
+                text-indent: 0;
+        }
+
         html, body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             height: 100%;
             overflow: hidden;
             user-select: none;
+            touch-action: manipulation;
         }
 
         body {
@@ -27,14 +46,6 @@
             align-items: center;
         }
 
-        .eq input {
-            font-size: 40px;
-        }
-
-        .eq button {
-            align-self: stretch;
-        }
-
         .status {
             font-size: 128px;
             opacity: 0;
@@ -45,6 +56,10 @@
             width: 2em;
             display: flex;
             justify-content: center;
+            color: black;
+            border: solid black 2px;
+            border-radius: 5px;
+            padding: 10px 20px;
         }
 
         .buttons {
