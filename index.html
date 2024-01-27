@@ -37,18 +37,44 @@
             font-size: 128px;
             opacity: 0;
         }
+
+        button {
+            font-size: 40px;
+            width: 2em;
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            grid-gap: 20px
+        }
+
+        .right {
+            color: green;
+        }
+
+        .wrong {
+            color: red;
+        }
     </style>
 </head>
 <body>
+    <div class="score">
+        <span class="right">Right: </span>
+        &nbsp;/&nbsp;
+        <span class="wrong">Wrong: </span>
+    </div>
     <div class="status">
         😡
     </div>
     <div class="eq">
         <div id="eq-left">9 + 7 = </div>
-        &nbsp;
-        <input id="eq-right" type="number">
-        &nbsp;
-        <button id="ok-btn">OK</button>
     </div>
     <div class="buttons">
 

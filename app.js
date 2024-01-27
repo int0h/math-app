@@ -26,14 +26,10 @@ let currentEq = {
 /** @type {Record<string, HTMLDivElement>} */
 const dom = {
     left: document.querySelector('#eq-left'),
-    right: document.querySelector('#eq-right'),
-    btn: document.querySelector('#ok-btn'),
     status: document.querySelector('.status'),
-};
-
-dom.btn.onclick = () => {
-    const guess = Number(dom.right.value.trim());
-    check(guess);
+    buttons: document.querySelector('.buttons'),
+    right: document.querySelector('.right'),
+    wrong: document.querySelector('.wrong'),
 };
 
 function check(guess) {
@@ -41,10 +37,14 @@ function check(guess) {
         ? currentEq.sum === guess
         : currentEq.b === guess;
     if (correct) {
+        score.right++;
+        updateScore();
         updateStatus('🎉');
         setupEq(generate());
         dom.right.value = '';
     } else {
+        score.wrong++;
+        updateScore();
         updateStatus('😡');
     }
 }
@@ -52,8 +52,8 @@ function check(guess) {
 function setupEq(eq) {
     currentEq = eq;
     dom.left.textContent = currentEq.action === '+'
-        ? `${eq.a} + ${eq.b} =`
-        : `${eq.sum} - ${eq.a} =`;
+        ? `${eq.a} + ${eq.b} = ?`
+        : `${eq.sum} - ${eq.a} = ?`;
 }
 
 function updateStatus(emoji) {
@@ -65,5 +65,34 @@ function updateStatus(emoji) {
         dom.status.style.transition = 'ease-out 2s opacity';
     }, 1);
 }
+
+function genButtons() {
+    for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.onclick = () => {
+            check(i);
+        };
+        dom.buttons.appendChild(btn);
+    }
+}
+
+let score = {right: 0, wrong: 0};
+const saved = localStorage.getItem('score');
+if (saved) {
+    score = JSON.parse(saved);
+} else {
+    localStorage.setItem('score', JSON.stringify(score));
+}
+
+function updateScore() {
+    localStorage.setItem('score', JSON.stringify(score));
+    dom.right.textContent = `Right: ${score.right}`;
+    dom.wrong.textContent = `Wrong: ${score.wrong}`;
+}
+
+updateScore();
+
+genButtons();
 
 setupEq(generate());
