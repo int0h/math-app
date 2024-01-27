@@ -28,6 +28,7 @@ const dom = {
     left: document.querySelector('#eq-left'),
     status: document.querySelector('.status'),
     buttons: document.querySelector('.buttons'),
+    streak: document.querySelector('.streak'),
     right: document.querySelector('.right'),
     wrong: document.querySelector('.wrong'),
 };
@@ -38,12 +39,14 @@ function check(guess) {
         : currentEq.b === guess;
     if (correct) {
         score.right++;
+        score.streak++;
         updateScore();
         updateStatus('🎉');
         setupEq(generate());
         dom.right.value = '';
     } else {
         score.wrong++;
+        score.streak = 0;
         updateScore();
         updateStatus('😡');
     }
@@ -77,16 +80,20 @@ function genButtons() {
     }
 }
 
-let score = {right: 0, wrong: 0};
+let score = {streak: 0, right: 0, wrong: 0};
 const saved = localStorage.getItem('score');
 if (saved) {
     score = JSON.parse(saved);
+    score.right = score.right ?? 0;
+    score.wrong = score.wrong ?? 0;
+    score.streak = score.streak ?? 0;
 } else {
     localStorage.setItem('score', JSON.stringify(score));
 }
 
 function updateScore() {
     localStorage.setItem('score', JSON.stringify(score));
+    dom.streak.textContent = `Streak: ${score.streak}`;
     dom.right.textContent = `Right: ${score.right}`;
     dom.wrong.textContent = `Wrong: ${score.wrong}`;
 }

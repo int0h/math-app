@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=0">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous"> -->
     <title>Math App</title>
     <style>
@@ -10,6 +10,7 @@
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             height: 100%;
+            overflow: hidden;
         }
 
         body {
@@ -62,10 +63,16 @@
         .wrong {
             color: red;
         }
+
+        .streak {
+            color: blue;
+        }
     </style>
 </head>
 <body>
     <div class="score">
+        <span class="streak">Streak: </span>
+        &nbsp;/&nbsp;
         <span class="right">Right: </span>
         &nbsp;/&nbsp;
         <span class="wrong">Wrong: </span>
