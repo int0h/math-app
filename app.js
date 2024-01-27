@@ -115,3 +115,7 @@ window.addEventListener('touchend', e => {
 if (location.hash === '#debug') {
     alert(JSON.stringify(localStorage.getItem('score')));
 }
+
+if (location.hash === '#clear') {
+    localStorage.clear();
+}
