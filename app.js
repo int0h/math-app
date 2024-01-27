@@ -84,9 +84,9 @@ let score = {streak: 0, right: 0, wrong: 0};
 const saved = localStorage.getItem('score');
 if (saved) {
     score = JSON.parse(saved);
-    score.right = score.right ?? 0;
-    score.wrong = score.wrong ?? 0;
-    score.streak = score.streak ?? 0;
+    score.right = score.right || 0;
+    score.wrong = score.wrong || 0;
+    score.streak = score.streak || 0;
 } else {
     localStorage.setItem('score', JSON.stringify(score));
 }
