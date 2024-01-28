@@ -46,7 +46,7 @@ function check(guess) {
         dom.right.value = '';
     } else {
         score.wrong++;
-        score.streak = 0;
+        score.streak = Math.max(0, score.streak - 2);
         updateScore();
         updateStatus('😡');
     }
